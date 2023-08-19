@@ -51,9 +51,6 @@ export const CharactersProvider = ({ children }: CharactersProviderProps) => {
 
   const prevPage = () => {
     const prevPage = Math.max(state.currentPage - 1, 1);
-
-    if (prevPage < 1) return;
-    
     goToPage(prevPage);
   };
 
