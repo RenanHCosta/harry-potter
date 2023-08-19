@@ -3,8 +3,9 @@ export interface Character {
   name: string;
   actor: string;
   alive: boolean;
-  image: string;
+  image?: string;
   patronus: string;
   wizard: boolean;
   house: string;
+  dateOfBirth: string;
 }
