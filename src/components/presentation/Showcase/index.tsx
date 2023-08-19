@@ -5,7 +5,7 @@ import { useCharacters } from "hooks/use-characters";
 import './Showcase.style.scss';
 
 function Showcase() {
-  const { displayedCharacters, loading, nextPage, prevPage } = useCharacters();
+  const { displayedCharacters, currentPage, loading, nextPage, prevPage } = useCharacters();
 
   return (
     <section className="container showcase">
@@ -15,7 +15,7 @@ function Showcase() {
           : <span>Loading...</span>}
       </div>
       <div className="showcase__pagination">
-        <Button label="Anterior" onClick={prevPage} />
+        <Button disabled={currentPage === 1} label="Anterior" onClick={prevPage} />
         <Button label="Próximo" onClick={nextPage} />
       </div>
     </section>

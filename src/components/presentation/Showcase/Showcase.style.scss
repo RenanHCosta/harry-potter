@@ -1,3 +1,5 @@
+@import '@/styles/helpers/media-queries';
+
 .showcase {
   display: flex;
   flex-direction: column;
@@ -10,7 +12,14 @@
 
   &__pagination {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     width: 100%;
+    gap: 8px;
+    margin-top: 12px;
+
+    @include min-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 }

@@ -1,3 +1,5 @@
+import './Button.style.scss';
+
 type ButtonVariants = "primary" | "secondary";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -5,9 +7,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariants;
 }
 
-function Button({ label, variant, ...rest }: ButtonProps) {
+function Button({ label, variant = 'primary', ...rest }: ButtonProps) {
   return (
     <button
+      type="button"
       aria-label={label}
       className={`button button--${variant}`}
       {...rest}

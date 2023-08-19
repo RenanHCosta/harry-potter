@@ -78,7 +78,7 @@ export const CharactersProvider = ({ children }: CharactersProviderProps) => {
   const startIndex = (state.currentPage - 1) * state.itemsPerPage;
   const endIndex = startIndex + state.itemsPerPage;
   const displayedCharacters = state.list.slice(startIndex, endIndex);
-
+  
   return (
     <CharactersContext.Provider
       value={{ ...state, displayedCharacters, nextPage, prevPage }}

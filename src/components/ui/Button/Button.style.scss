@@ -1,9 +1,29 @@
+@import '@/styles/helpers/variables';
+@import '@/styles/helpers/media-queries';
+
 .button {
   cursor: pointer;
-  padding: 8px;
+  padding: 12px 32px;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: .2s ease-in-out;
+
+  @include min-desktop {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &:disabled {
+    filter: brightness(0.3);
+  }
 
   &--primary {
-    background: var(--color-highlight);
+    background: linear-gradient(24deg, $color-highlight, transparent);
+    color: white;
   }
 
   &--secondary {}
