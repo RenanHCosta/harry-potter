@@ -6,7 +6,6 @@ import './Showcase.style.scss';
 function Showcase() {
   const { list, loading } = useCharacters();
 
-  console.log(list)
   return (
     <section className="container showcase">
       {!loading
