@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+// helpers
+@import "helpers/variables",
+"helpers/mixins",
+"helpers/media-queries",
+"helpers/helpers";
+
+:root {
+  font-family: $font-default;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: $color-text-primary;
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
