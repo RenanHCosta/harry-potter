@@ -1,3 +1,5 @@
+@import '@/styles/helpers/variables';
+
 .card {
   display: flex;
   position: relative;
@@ -10,7 +12,7 @@
   min-height: 300px;
 
   &:hover {
-    border: 2px solid var(--color-highlight);
+    border: 2px solid $color-highlight;
   }
 
   &__image {
@@ -24,6 +26,7 @@
       height: 400px;
       display: grid;
       place-items: center;
+      color: $color-error;
     }
   }
 
@@ -31,7 +34,7 @@
     position: absolute;
     top: 8px;
     right: 8px;
-    background-color: white;
+    background-color: $color-white;
     border-radius: 10px;
     font-size: 12px;
     color: black;
@@ -43,7 +46,7 @@
     flex-direction: column;
     width: 100%;
     padding: 8px;
-    background-color: var(--color-highlight);
+    background-color: $color-highlight;
 
     &--text {
       overflow: hidden;
