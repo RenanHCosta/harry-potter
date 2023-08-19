@@ -1,0 +1,10 @@
+.button {
+  cursor: pointer;
+  padding: 8px;
+
+  &--primary {
+    background: var(--color-highlight);
+  }
+
+  &--secondary {}
+}

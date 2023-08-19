@@ -44,5 +44,11 @@
     width: 100%;
     padding: 8px;
     background-color: var(--color-highlight);
+
+    &--text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 }
