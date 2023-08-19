@@ -1,0 +1,15 @@
+.introduction {
+  position: relative;
+  background-image: url('assets/images/background.jpg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  overflow: hidden;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  filter: drop-shadow(2px 4px 6px black);
+}

@@ -4,9 +4,8 @@ import './Home.style.scss'
 
 function Home() {
   return (
-    <main className="container">
+    <main>
       <Introduction />
-      <h1>Harry Potter</h1>
     </main>
   )
 }

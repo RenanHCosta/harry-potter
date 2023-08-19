@@ -11,3 +11,10 @@ $color-error: #d7182a;
 
 // Text colors
 $color-text-primary: $color-white;
+
+:root {
+  --color-highlight: #{$color-highlight};
+  --color-black: #{$color-black};
+  --color-white: #{$color-white};
+  --color-error: #{$color-error};
+}
