@@ -1,10 +1,9 @@
 import { useRef } from "react";
+import { useCharacters } from "@/hooks";
 
 import Filters from "components/presentation/Filters";
 import CharacterCard from "components/ui/CharacterCard";
 import Button from "components/ui/Button";
-
-import { useCharacters } from "hooks/use-characters";
 
 import "./Showcase.style.scss";
 

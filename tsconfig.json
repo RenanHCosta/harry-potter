@@ -6,7 +6,6 @@
       "components/*": ["src/components/*"],
       "services/*": ["src/services/*"],
       "contexts/*": ["src/contexts/*"],
-      "hooks/*": ["src/hooks/*"],
       "utils/*": ["src/utils/*"],
       "assets/*": ["src/assets/*"],
       "constants/*": ["src/constants/*"],

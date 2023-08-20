@@ -1,10 +1,9 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import { useCharacters, useDebounce } from "@/hooks";
 
 import SearchIcon from "assets/images/svg/icon-search.svg";
 
 import "./Filters.style.scss";
-import { useDebounce } from "@/hooks/use-debounce";
-import { useCharacters } from "@/hooks/use-characters";
 
 function Filters() {
   const { updateSearchQuery } = useCharacters();
