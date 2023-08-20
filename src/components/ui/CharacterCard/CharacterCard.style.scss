@@ -60,6 +60,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      color: $color-black;
+
+      &.text--name {
+        font-weight: 600;
+      }
     }
   }
 }

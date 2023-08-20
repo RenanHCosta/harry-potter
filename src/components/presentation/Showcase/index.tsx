@@ -17,6 +17,7 @@ function Showcase() {
     prevPage,
   } = useCharacters();
   const ref = useRef<HTMLElement>(null);
+  const notFound = pageCharacters.length === 0 && !loading;
 
   const handleScroll = () => {
     setTimeout(() => {
@@ -37,21 +38,25 @@ function Showcase() {
   return (
     <section ref={ref} className="container showcase">
       <Filters />
-      <div className="showcase__grid">
-        {!loading
-          ? pageCharacters.map((character) => (
-            <CharacterCard key={character.id} {...character} />
-          ))
-          : <span>Loading...</span>}
-      </div>
+      {notFound
+        ? <p className="no-results">Nenhum resultado encontrado.</p>
+        : (
+          <div className="showcase__grid">
+            {!loading
+              ? pageCharacters.map((character) => (
+                <CharacterCard key={character.id} {...character} />
+              ))
+              : <span>Loading...</span>}
+          </div>
+        )}
       <div className="showcase__pagination">
         <Button
-          disabled={currentPage === 1}
+          disabled={currentPage === 1 || notFound}
           label="Anterior"
           onClick={handlePrev}
         />
         <Button
-          disabled={currentPage === totalPages}
+          disabled={currentPage === totalPages || notFound}
           label="Próximo"
           onClick={handleNext}
         />

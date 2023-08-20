@@ -22,11 +22,11 @@ const CharacterCard = memo(
           : <div className="card__image--error">No image provided.</div>}
         <span className="card__alive-flag">{alive ? "VIVO" : "MORTO"}</span>
         <div className="card__info">
-          <span className="card__info--text">{name}</span>
-          <span className="card__info--text">Nascimento: {dateOfBirth}</span>
-          <span className="card__info--text">Casa: {house}</span>
-          <span className="card__info--text">Patrono: {patronus}</span>
-          <span className="card__info--text">Ator: {actor}</span>
+          <span className="card__info--text text--name">{name}</span>
+          <span className="card__info--text">Date of Birth: {dateOfBirth}</span>
+          <span className="card__info--text">House: {house}</span>
+          <span className="card__info--text">Patronus: {patronus}</span>
+          <span className="card__info--text">Actor: {actor}</span>
         </div>
       </div>
     );
