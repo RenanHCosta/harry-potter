@@ -1,6 +1,7 @@
-import { Character } from "@/interfaces/character";
 import { createContext, useEffect, useState } from "react";
 import apiService from "services/api-service";
+import { filterCharacters } from "utils/filters";
+import { Character } from "@/interfaces/character";
 
 type CharactersProviderProps = {
   children: React.ReactNode;
@@ -19,7 +20,9 @@ type CharactersContextType = InitialStateType & {
   nextPage: () => void;
   prevPage: () => void;
   updateSearchQuery: (query: string) => void;
+  updateHouseFilter: (house: string) => void;
   totalPages: number;
+  houseFilter: string;
 };
 
 const INITIAL_STATE: InitialStateType = {
@@ -36,19 +39,25 @@ export const CharactersContext = createContext<CharactersContextType>({
   nextPage: () => {},
   prevPage: () => {},
   updateSearchQuery: () => {},
+  updateHouseFilter: () => {},
   totalPages: 1,
+  houseFilter: "",
 });
 
 export const CharactersProvider = ({ children }: CharactersProviderProps) => {
   const [state, setState] = useState<InitialStateType>(INITIAL_STATE);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [houseFilter, setHouseFilter] = useState<string>("");
 
   const startIndex = (state.currentPage - 1) * state.itemsPerPage;
   const endIndex = startIndex + state.itemsPerPage;
-  const pageCharacters = searchQuery
+
+  const useFilteredCharacters = searchQuery || houseFilter;
+
+  const pageCharacters = useFilteredCharacters
     ? state.filteredCharacters.slice(startIndex, endIndex)
     : state.list.slice(startIndex, endIndex);
-  const totalPages = searchQuery
+  const totalPages = useFilteredCharacters
     ? Math.ceil(state.filteredCharacters.length / state.itemsPerPage)
     : Math.ceil(state.list.length / state.itemsPerPage);
 
@@ -74,6 +83,34 @@ export const CharactersProvider = ({ children }: CharactersProviderProps) => {
     goToPage(1); // Reset to first page when search query changes
   };
 
+  const updateHouseFilter = (house: string) => {
+    if (houseFilter === house) {
+      setHouseFilter("");
+    } else {
+      setHouseFilter(house);
+    }
+    goToPage(1);
+  };
+
+  const handleFilters = () => {
+    setState((prevState) => ({
+      ...prevState,
+      loading: true,
+    }));
+
+    const filteredCharacters = filterCharacters(
+      state.list,
+      searchQuery,
+      houseFilter,
+    );
+
+    setState((prevState) => ({
+      ...prevState,
+      filteredCharacters,
+      loading: false,
+    }));
+  };
+
   useEffect(() => {
     async function fetchAll() {
       try {
@@ -96,18 +133,8 @@ export const CharactersProvider = ({ children }: CharactersProviderProps) => {
   }, []);
 
   useEffect(() => {
-    if (searchQuery) {
-      const filteredCharacters = state.list.filter((character) =>
-        character.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-
-      setState((prevState) => ({
-        ...prevState,
-        filteredCharacters: filteredCharacters,
-        loading: false,
-      }));
-    }
-  }, [searchQuery, state.list]);
+    handleFilters();
+  }, [searchQuery, houseFilter]);
 
   return (
     <CharactersContext.Provider
@@ -116,8 +143,10 @@ export const CharactersProvider = ({ children }: CharactersProviderProps) => {
         nextPage,
         prevPage,
         updateSearchQuery,
+        updateHouseFilter,
         pageCharacters,
         totalPages,
+        houseFilter,
       }}
     >
       {children}
