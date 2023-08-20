@@ -7,8 +7,13 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+    justify-content: center;
     gap: 12px;
+
+    @include min-desktop {
+      justify-content: start;
+    }
   }
 
   &__pagination {
