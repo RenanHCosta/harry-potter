@@ -45,6 +45,8 @@ function Filters() {
                 alt={house}
                 src={`/svg/${house}.svg`}
                 onClick={() => handleHouseClick(house)}
+                width={48}
+                height={48}
                 className={houseFilter === house ? "active" : ""}
               />
             </li>
