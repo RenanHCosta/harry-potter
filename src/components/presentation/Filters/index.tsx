@@ -66,7 +66,7 @@ function Filters() {
         <input
           type="search"
           className="filters__search--input"
-          placeholder="Avada Kedrava"
+          placeholder="Revelio"
           onChange={handleChange}
         />
       </div>
