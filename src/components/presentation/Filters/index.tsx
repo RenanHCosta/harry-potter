@@ -43,7 +43,7 @@ function Filters() {
             <li key={house}>
               <img
                 alt={house}
-                src={`src/assets/images/svg/${house}.svg`}
+                src={`/svg/${house}.svg`}
                 onClick={() => handleHouseClick(house)}
                 className={houseFilter === house ? "active" : ""}
               />
